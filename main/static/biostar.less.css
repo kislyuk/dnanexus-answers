@@ -271,6 +271,7 @@ div.post-show {
     }
     
     .post-info-panel {
+        margin-top: 5px;
         max-width:10em;
         float: right;
         background-color:#EEEEEE;
@@ -281,6 +282,7 @@ div.post-show {
     }
 
     .body{
+        margin-top: 5px;
         overflow: visible;
     }
     
