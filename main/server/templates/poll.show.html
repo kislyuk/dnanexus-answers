@@ -25,7 +25,7 @@
     $('pre').addClass('prettyprint')
     prettyPrint()
 
-    $('.comment-delete').click(function(){
+    $('.comment-delete, .choice-delete').click(function(){
     comment_delete($(this))
     });
 
@@ -69,6 +69,9 @@
         {% for choice in choices %}
             <div class="poll-choice">
                 {% mini_vote_box choice %}
+                {% if choice.writeable %}
+                    <div class="choice-delete" target="{{choice.id}}">&times;</div>
+                {% endif %}
                 <div class="choice-name">
                     {{choice.content}}
                 </div>

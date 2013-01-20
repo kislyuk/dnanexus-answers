@@ -221,6 +221,10 @@ input.search-query{
     .choice-name {
       padding-top: 5px;
     }
+    .choice-delete {
+      .comment-delete;
+      padding-top: 5px;
+    }
   }
 }
 
