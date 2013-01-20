@@ -1,0 +1,14 @@
+<div class="mini-vote-box">
+    <div class="vote">
+        <input type="hidden" value="{{post.id}}">
+    
+        {% if post.upvoted %}
+            <div class="vote-up vote-on" title="Click to remove">&nbsp;</div>
+        {% else %}
+            <div class="vote-up vote-off" title="Click to upvote">&nbsp;</div>
+        {% endif %}
+    
+        <div class="vote-count">{{post.score}}</div>
+
+    </div>
+</div>

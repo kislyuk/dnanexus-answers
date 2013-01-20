@@ -44,6 +44,8 @@
     $('.vote-down').tooltip('hide')
     $('.vote-bookmark').tooltip('hide')
 
+    $('.poll-choices').appendTo($('.post-show .body'))
+
 {% endblock %}
 
 {% block body %}
@@ -63,16 +65,16 @@
 
     {# renders all the followups post #}
     <div class="poll-choices">
-    {% for choice in choices %}
-        <div class="poll-choice">
-            <div class="poll-choice-vote">
-
+        <div class="clearfix"></div>
+        {% for choice in choices %}
+            <div class="poll-choice">
+                {% mini_vote_box choice %}
+                <div class="choice-name">
+                    {{choice.content}}
+                </div>
+                <div class="clearfix"></div>
             </div>
-            <div class="poll-choice-name">
-                {{choice.content}}
-            </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
     </div>
 
 

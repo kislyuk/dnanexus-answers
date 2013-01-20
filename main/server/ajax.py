@@ -65,7 +65,7 @@ def vote(request):
     if type == VOTE_DOWN:
         return ajax_success('Downvote received!')
 
-    if type  in (VOTE_UP, VOTE_DOWN, VOTE_ACCEPT) and post.author == author:
+    if type  in (VOTE_UP, VOTE_DOWN, VOTE_ACCEPT) and post.author == author and post.type != POST_POLL_CHOICE:
         return ajax_error('You may not vote on your own post')
     
     if type == VOTE_ACCEPT and post.root.author != author:

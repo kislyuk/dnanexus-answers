@@ -38,6 +38,10 @@ def user_box(user, size=100):
 def vote_box(context, post):
     return {'post':post}
 
+@register.inclusion_tag('widgets/mini.vote.box.html', takes_context=True)
+def mini_vote_box(context, post):
+    return {'post':post}
+
 @register.inclusion_tag('widgets/post.edit.actions.html')
 def post_edit_actions(request, post):
     user = request.user

@@ -215,6 +215,15 @@ input.search-query{
     border-bottom: 1px solid #DDD;
 }
 
+.poll-choices{
+  .poll-choice {
+    height: 30px;
+    .choice-name {
+      padding-top: 5px;
+    }
+  }
+}
+
 .hail {
     float:left;
     padding:3px;
