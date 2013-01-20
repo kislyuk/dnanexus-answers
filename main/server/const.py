@@ -25,10 +25,10 @@ FIRST_SESSION = 'first-session'
 LASTSORT_SESSION = 'last-sort'
 
 # Add at the end
-POST_QUESTION, POST_ANSWER, POST_COMMENT, POST_TUTORIAL, POST_BLOG, POST_FORUM, POST_NEWS, POST_REVIEW, POST_TOOL, POST_FIXME, POST_VIDEO, POST_JOB, POST_PUBLICATION, POST_TIP, POST_OTHER = range(1, 16)
+POST_QUESTION, POST_ANSWER, POST_COMMENT, POST_TUTORIAL, POST_BLOG, POST_FORUM, POST_NEWS, POST_REVIEW, POST_TOOL, POST_FIXME, POST_VIDEO, POST_JOB, POST_PUBLICATION, POST_TIP, POST_OTHER, POST_POLL, POST_POLL_CHOICE = range(1, 18)
 POST_TYPES  = ( (POST_ANSWER, 'Answer') , (POST_COMMENT, 'Comment'), (POST_QUESTION, 'Question'), (POST_TUTORIAL, 'Tutorial'), (POST_TIP, 'Tip'),
     (POST_BLOG, 'Blog'), (POST_FORUM, 'Forum'), (POST_NEWS, 'News'), (POST_REVIEW, 'Review'), (POST_TOOL, 'Tool'), (POST_VIDEO, 'Video'),
-    (POST_FIXME, 'FixMe'), (POST_JOB, 'Job'), (POST_PUBLICATION, 'Research Paper') )
+    (POST_FIXME, 'FixMe'), (POST_JOB, 'Job'), (POST_PUBLICATION, 'Research Paper'), (POST_POLL, 'Poll'), (POST_POLL_CHOICE, 'Poll choice') )
 
 # direct mapping for quick lookups
 POST_MAP  = dict( POST_TYPES )
@@ -53,10 +53,10 @@ VALID_PILLS = set( "mytags all news questions unanswered tutorials tools videos 
 VALID_TABS = set( "recent planet sticky".split() ) | VALID_PILLS 
 
 # posts that only have content, no title or tags
-POST_CONTENT_ONLY = set( [POST_ANSWER, POST_COMMENT ])
+POST_CONTENT_ONLY = set( [POST_ANSWER, POST_COMMENT, POST_POLL_CHOICE ])
 
 # these posts must have parent
-POST_SUBLEVEL = set( [POST_ANSWER, POST_COMMENT ])
+POST_SUBLEVEL = set( [POST_ANSWER, POST_COMMENT, POST_POLL_CHOICE ])
 
 # main level posts 
 POST_EXCLUDE = set( [POST_ANSWER, POST_COMMENT, POST_BLOG ])

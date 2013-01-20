@@ -72,8 +72,8 @@ class TopLevelContent(forms.Form):
     tag_val = forms.CharField(max_length=250, initial='', validators=[ valid_tag ],
         widget=forms.TextInput(attrs={'class':'span4', 'placeholder': P_TAG}))
     
-    # the first two post types are not creatable here
-    type = forms.ChoiceField(choices=const.POST_TYPES[2:])
+    # only toplevel post types are not creatable here
+    type = forms.ChoiceField(choices=[item for item in const.POST_TYPES if item[0] in const.POST_TOPLEVEL])
 
 class ChildContent(forms.Form):
     """

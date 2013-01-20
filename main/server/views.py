@@ -386,6 +386,14 @@ def post_show(request, pid):
     # add the various decorators
     
     models.decorate_posts(all, user)
+
+    # get all the comments
+    tree = defaultdict(list)
+    for comment in comments:
+        tree[comment.parent_id].append(comment)
+
+    if root.type == POST_POLL:
+        return poll_show(request, root, children, tree, params, counts)
     
     # may this user accept answers on this root
     accept_flag = (user == root.author)
@@ -394,16 +402,16 @@ def post_show(request, pid):
     answers = [ o for o in children if o.type == POST_ANSWER ]
     for a in answers:
         a.accept_flag = accept_flag
-        
-    # get all the comments
-    tree = defaultdict(list)
-    for comment in comments:  
-        tree[comment.parent_id].append(comment)
    
     # generate the tag cloud
     #tags = models.Tag.objects.all().order_by('-count')[:50]
     
     return html.template( request, name='post.show.html', root=root, answers=answers, tree=tree, params=params, counts=counts)
+
+def poll_show(request, root, children, tree, params, counts):
+    choices = [o for o in children if o.type == POST_POLL_CHOICE]
+
+    return html.template( request, name='poll.show.html', root=root, choices=choices, tree=tree, params=params, counts=counts)
  
 def redirect(post):
     return html.redirect( post.get_absolute_url() )
