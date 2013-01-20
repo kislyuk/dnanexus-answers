@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% load widgets %}
+
+{% block title %}
+    {{root.title}} - BioStar
+{% endblock %}
+
+{% block head %}
+    <script src="{{ STATIC_URL }}js/handlers.js"></script>
+
+    <!-- prettify -->
+    <link href="{{ STATIC_URL }}lib/prettify.css" rel="stylesheet">
+    <script src="{{ STATIC_URL }}lib/prettify.js"></script>
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}lib/pagedown/Markdown.css" type="text/css"/>
+    <script type="text/javascript" src="{{ STATIC_URL }}lib/pagedown/Markdown.Converter.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}lib/pagedown/Markdown.Sanitizer.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}lib/pagedown/Markdown.Editor.js"></script>
+    <meta name="keywords" content="{{root.tag_val}}" />
+{% endblock %}
+
+{% block document_ready %}
+
+    // google prettify library
+    $('pre').addClass('prettyprint')
+    prettyPrint()
+
+    $('.comment-delete').click(function(){
+    comment_delete($(this))
+    });
+
+    // register the add comment function
+    $('.add-comment').each(function(){
+    elem = $(this)
+    //console.log(elem)
+    //callback function defined in /static/js/widgets.js
+    elem.click(function(){
+    show_add_comment($(this).parent(), $(this).parent().children('input').val());
+    });
+    });
+
+    // tooltips
+    $('.vote-up').tooltip('hide')
+    $('.vote-down').tooltip('hide')
+    $('.vote-bookmark').tooltip('hide')
+
+{% endblock %}
+
+{% block body %}
+
+    {% if root.closed %}
+        <div class="alert alert-warning">This poll has been closed. No more choices may be added.</div>
+    {% endif %}
+
+    {% if root.deleted %}
+        <div class="alert alert-error">This poll has been deleted. No more choices may be added.</div>
+    {% endif %}
+
+
+    {# renders the main post #}
+    <div class="row"><div class="span12">{% render_post root tree %}</div></div>
+
+
+    {# renders all the followups post #}
+    <div class="poll-choices">
+    {% for choice in choices %}
+        <div class="poll-choice">
+            <div class="poll-choice-vote">
+
+            </div>
+            <div class="poll-choice-name">
+                {{choice.content}}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+        {% if root.open %}
+            <div class="row" id="add-answer-row">
+                <div class="span12">
+
+                    <legend>Add a choice</legend>
+                    <form class="form-inline" action="/new/choice/{{root.id}}/" method="post">
+                        {% csrf_token %}
+
+                        <input type="text" class="input-xxlarge" placeholder="Choice name" name="content">
+                        <input type="submit" class="btn btn-success" value="Add choice">
+                    </form>
+
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="alert alert-info" style="margin-top: 5px;">Log in to add a post</div>
+    {% endif %}
+
+{% endblock %}

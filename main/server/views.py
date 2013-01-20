@@ -424,6 +424,10 @@ def new_comment(request, pid=0):
 @login_required(redirect_field_name='/openid/login/')
 def new_answer(request, pid):
     return new_post(request=request, pid=pid, post_type=POST_ANSWER)
+
+@login_required(redirect_field_name='/openid/login/')
+def new_choice(request, pid):
+    return new_post(request=request, pid=pid, post_type=POST_POLL_CHOICE)
     
 @login_required(redirect_field_name='/openid/login/')
 def new_post(request, pid=0, post_type=POST_QUESTION):

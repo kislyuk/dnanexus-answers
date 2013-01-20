@@ -82,7 +82,9 @@ urlpatterns = patterns('main.server',
     url(r'^new/post/$','views.new_post', name="new-post"),
     url(r'^new/answer/(?P<pid>\d+)/$','views.new_answer', name="new-answer"),
     url(r'^new/comment/(?P<pid>\d+)/$','views.new_comment', name="new-comment"),
-    
+    url(r'^new/choice/(?P<pid>\d+)/$','views.new_choice', name="new-choice"),
+
+
     # static pages
     url(r'^about/$','pages.about', name='about'),
     url(r'^rss/$','pages.rss', name='rss'),
