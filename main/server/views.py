@@ -78,7 +78,7 @@ def filter_by_type(request, posts, post_type):
     elif post_type == 'mytags':
         return mytags_posts(request)
     elif post_type == 'recent':
-        return posts.exclude(type=POST_BLOG).select_related('author', 'author__profile','root')
+        return posts.exclude(type__in=[POST_BLOG, POST_POLL_CHOICE]).select_related('author', 'author__profile','root')
     
     return posts.exclude(type__in=POST_EXCLUDE)
     
