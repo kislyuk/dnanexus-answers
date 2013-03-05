@@ -7,7 +7,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% block title %}Bioinformatics at BioStar{% endblock %}</title>
+    <title>{% block title %}DNAnexus Answers{% endblock %}</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -26,6 +26,7 @@
     <link href="{{ STATIC_URL }}lib/bootstrap/css/bootstrap.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}lib/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
     <script src="{{ STATIC_URL }}lib/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/font-awesome.min.css" media="all">
 
     {%  if debug %}
         <!-- writtent this way to avoid the dependency on precompilers -->
@@ -149,8 +150,8 @@
 
         <div class="row" id="header">
             <div class="span3">
-                &nbsp;
-                <a href="/"><img src="{{ STATIC_URL }}biostar.logo.png" width="263" class="logo"></a>
+              &nbsp;<span style="color: #888; font-weight: bold">ANSWERS</span>
+                <a href="/"><img src="{{ STATIC_URL }}dnanexus.logo.png" width="260" style="position:relative; left:0px; top:-10px; z-index:-1; background-color:transparent;" class="logo"></a> 
             </div>
             <div class="span9">
                 <div id="topbar">
@@ -192,31 +193,35 @@
         {% block body %}
            Test Body
         {% endblock %}
-        
-        <div class="row" id="footer">
-            <div class="span12">
-                {% block footer %}
 
-                 <a href="{% url main.server.pages.rss %}">RSS</a> <img align="middle" src="{{STATIC_URL}}img/feed-icon-small.png"> &bull; Powered by <a href="https://github.com/ialbert/biostar-central"><img src="{{ STATIC_URL }}biostar.antipixel.png" /></a>
-                &bull; Version: <b>{{BIOSTAR_VERSION}}</b></a>
-                &bull; Copyright by the <a href="https://github.com/ialbert/biostar-central/contributors">BioStar team</a>
-                &bull; License:
-                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
-                <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>
-                {% if debug %}
-                  &bull; <a id="toggle-queries">{{sql_queries|length}} SQL queries</a>
-                  <div id="queries" style="text-align: left;">
-                    <ul id="query-list">
-                      {% for query in sql_queries %}
-                        <li>{{ query.sql}} [in {{query.time}}s]</li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                {% endif %}
-                {% endblock %}
-            </div>
-        </div>
-    </div> <!-- /container -->
+<footer class='clearfix'>
+  <div class="dx-wiki-footer dx-container-fluid">
+    <ul class="dx-footer-links">
+      <li class="dx-wiki-footer-li"><a href="https://platform.dnanexus.com/" class="dx-route">DNAnexus Platform</a></li>
+      <li class="dx-muted dx-wiki-footer-li">·</li>
+      <li class="dx-wiki-footer-li"><a href="/Downloads">Downloads</a></li>
+      <li class="dx-muted dx-wiki-footer-li">·</li>
+      <li class="dx-wiki-footer-li"><a href="/Home">Docs</a></li>
+      <li class="dx-muted dx-wiki-footer-li">·</li>
+      <li class="dx-wiki-footer-li"><a href="/Command-Line-Client/Quickstart">CLI</a></li>
+      <li class="dx-muted dx-wiki-footer-li">·</li>
+      <li class="dx-wiki-footer-li"><a href="/Developer-Portal">Developers</a></li>
+      <li class="dx-muted dx-wiki-footer-li">·</li>
+      <li class="dx-wiki-footer-li"><a href="/API-Specification-v1.0.0/Introduction">API</a></li>
+      <li class="dx-muted dx-wiki-footer-li">·</li>
+      <li class="dx-wiki-footer-li"><a href="/FAQ">FAQ</a></li>
+    </ul>
+    <ul class="dx-social-links dx-footer-links">
+      <li class="dx-wiki-footer-li"><a href="http://twitter.com/#!/dnanexus?utm_source=dnanexuslinkout&amp;utm_medium=link&amp;utm_campaign=dnanexuslinkout" target="_blank" class="dx-muted"><i class="icon icon-twitter-sign"></i></a></li>
+      <li class="dx-wiki-footer-li"><a href="http://www.facebook.com/pages/DNAnexus/223138427780595?utm_source=dnanexuslinkout&amp;utm_medium=link&amp;utm_campaign=dnanexuslinkout" target="_blank" class="dx-muted"><i class="icon icon-facebook-sign"></i></a></li>
+      <li class="dx-wiki-footer-li"><a href="https://plus.google.com/u/0/106523971985155265844/posts" target="_blank" class="dx-muted"><i class="icon icon-google-plus-sign"></i></a></li>
+      <li class="dx-wiki-footer-li"><a href="http://www.linkedin.com/groups/DNAnexus-3450703?gid=3450703&amp;trk=hb_side_g&amp;utm_source=dnanexuslinkout&amp;utm_medium=link&amp;utm_campaign=dnanexuslinkout" target="_blank" class="dx-muted"><i class="icon icon-linkedin-sign"></i></a></li>
+    </ul>
+
+    <p class="dx-muted legalese">&copy; 2013 DNAnexus, Inc. All Rights Reserved · <a class="dx-muted dx-route" href="https://platform.dnanexus.com/legal/terms">Terms</a> · <a class="dx-muted dx-route" href="https://platform.dnanexus.com/legal/privacy">Privacy</a></p>
+    <p class="dx-muted legalese">Powered by <a class="dx-muted" href="https://github.com/ialbert/biostar-central">BioStar</a></p>
+  </div>
+</footer>
 
   </body>
 </html>

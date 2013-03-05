@@ -115,7 +115,7 @@ class LastVisit(object):
             # anonymous users
             request.user.can_moderate = False
             if request.path == "/":
-                messages.info(request, 'Welcome to BioStar! Questions and Answers on Bioinformatics and Genomics!')
+                messages.info(request, 'Welcome to DNAnexus Answers! Questions and Answers on the DNAnexus Platform!')
             return 
             
         # at this point we only have authenticated users
