@@ -172,4 +172,7 @@ urlpatterns += patterns('',
 
 urlpatterns += staticfiles_urlpatterns()
 
- 
+import social_auth
+urlpatterns += patterns('',
+    url(r'', include('social_auth.urls')),
+)

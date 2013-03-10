@@ -19,6 +19,10 @@ body {
    overflow: scroll;
 }
 
+.outer-container {
+  width: 100%;
+}
+
 .container {
   position: relative; // Allow absolute positioning w.r.t. container
 }
@@ -357,14 +361,16 @@ div.post-show {
 }
 
 #topbar {
+  border: 1px solid #d4d4d4;
+  border-radius: 0.3em;
   position: absolute;
 //right: 10px;
   top: 0;
   width: 100%;
   z-index: 1;
+  font-weight: bold;
   #topbar-inner{
     background-color: #ebebeb;
-    height: 29px;
     padding: 0 5px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -479,7 +485,7 @@ div.post-show {
     }
 }
 
-@navbar-color:#8F2C47;
+@navbar-color:#00A0A0;
 
 .unanswered {
     background-color: @navbar-color;
@@ -487,7 +493,7 @@ div.post-show {
 }
 
 .answered {
-    background-color: #436C27;
+    background-color: #ace211;
     color: #FFFFFF;
 }
 
@@ -509,12 +515,12 @@ div.post-show {
 .tip { background-color: #2D9F6E; color: #FFFFFF; }
 
 .news {
-    background-color: #762C90;
+    background-color: #0080b0;
     color: #FFFFFF;
 }
 
 .tool {
-    background-color: #265040;
+    background-color: #60b000;
     color: #FFFFFF;
 }
 

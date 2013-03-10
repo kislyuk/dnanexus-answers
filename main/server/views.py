@@ -43,8 +43,8 @@ def get_post_manager(request):
 
 # mapst a word to a numeric post type
 POST_TYPE_MAP = dict(
-    questions=POST_QUESTION,  tutorials=POST_TUTORIAL, answers=POST_ANSWER, videos=POST_VIDEO,
-    planet=POST_BLOG, tools=POST_TOOL, jobs=POST_JOB, news=POST_NEWS, publications=POST_PUBLICATION,
+    questions=POST_QUESTION,  tutorials=POST_TUTORIAL, answers=POST_ANSWER,
+    tools=POST_TOOL, jobs=POST_JOB, news=POST_NEWS, publications=POST_PUBLICATION,
     forum=POST_FORUM,
 )
 
@@ -464,16 +464,16 @@ def post_show(request, pid):
 def redirect(post):
     return html.redirect( post.get_absolute_url() )
     
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def new_comment(request, pid=0):
     "Shortcut to new comments"
     return new_post(request=request, pid=pid, post_type=POST_COMMENT)
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def new_answer(request, pid):
     return new_post(request=request, pid=pid, post_type=POST_ANSWER)
     
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def new_post(request, pid=0, post_type=POST_QUESTION):
     "Handles the creation of a new post"
     
@@ -525,7 +525,7 @@ def new_post(request, pid=0, post_type=POST_QUESTION):
 
     return redirect(post)
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def post_edit(request, pid=0):
     "Handles the editing of an existing post"
     

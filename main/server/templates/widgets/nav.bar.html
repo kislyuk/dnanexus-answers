@@ -23,7 +23,11 @@
             <li><a href="/logout/?next_page=/">{% trans "log out" %}</a></li>
         {% else %}
             <li>
+<!--
                 <a href='/openid/login/' rel="nofollow"><i class="icon-user"></i> {% trans "Sign In" %}</a>
+-->
+                <a href="{% url "socialauth_begin" "dnanexus" %}">Log In with your DNAnexus Platform account</a></li>
+
             </li>
         {% endif %}
     </ul>

@@ -206,15 +206,21 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
     'django.core.context_processors.i18n',
     "main.context.extras",
-    "main.context.popular_tags"
+    "main.context.popular_tags",
+    'social_auth.context_processors.social_auth_by_type_backends',
 )
 
 AUTH_PROFILE_MODULE = "server.UserProfile"
 
 ROOT_URLCONF = 'main.urls'
 
+DNANEXUS_APP_ID = 'foo'
+DNANEXUS_API_SECRET = 'bar'
+DNANEXUS_SREG_EXTRA_DATA = ('username', 'first_name', 'middle_name', 'last_name')
+
 AUTHENTICATION_BACKENDS = (
-    'django_openid_auth.auth.OpenIDBackend',
+#    'social_auth.backends.contrib.github.GithubBackend',
+    'social_auth.backends.contrib.dnanexus.DNAnexusBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -225,11 +231,13 @@ OPENID_USE_AS_ADMIN_LOGIN = True
 # allow migration based on user email
 ALLOW_OPENID_MIGRATION = True
 
-LOGIN_URL = '/openid/login/'
+LOGIN_URL          = '/login-form/'
+LOGIN_ERROR_URL    = '/login-error/'
 LOGIN_REDIRECT_URL = '/'
 
 INSTALLED_APPS = [
     'django.contrib.auth',
+    'social_auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
@@ -245,7 +253,6 @@ INSTALLED_APPS = [
     'south',
     'compressor',
     'main.server',
-    'django_openid_auth',
     'django.contrib.sitemaps',
 ]
 
@@ -345,9 +352,6 @@ ANON_PILL_BAR = [
     ("forum", "/show/forum/", "Forum", "Forum" ),
     ("tutorials", "/show/tutorials/", "Tutorials", "Tutorial" ),
     ("tools", "/show/tools/", "Tools", "Tool" ),
-    ("videos", "/show/videos/", "Videos", "Video" ),
-    ("jobs", "/show/jobs/", "Jobs", "Job" ),
-    ("blog", "/show/planet/", "Planet", "Blog" ),
     ]
 
 USER_PILL_BAR = list(ANON_PILL_BAR)

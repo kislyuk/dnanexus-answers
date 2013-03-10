@@ -5,7 +5,7 @@
 {% load widgets %}
 
 {% block title %}
-    {{target.profile.display_name }} on BioStar
+    {{target.profile.display_name }} on DNAnexus Answers
 {% endblock %}
 
 {% block head %}
@@ -139,10 +139,9 @@
     </div>
 </div>
 
-{% if user == target %}
-    <div class="alert info">We have migrated the accounts from the old version of BioStar. See the <a href="/merge">account merge</a> page for more information</div>
-{% endif %}
-
+<!--
+<div class="alert info">Alert</div>
+-->
 
 <div class="row">
     <div class="span12">

@@ -52,7 +52,7 @@ def cleanup(request):
         # get rid of unused tags
         models.Tag.objects.filter(count=0).delete()
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def private_message(request, uid):
     "General moderation function"
     user   = request.user
@@ -77,7 +77,7 @@ def private_message(request, uid):
 
     return html.redirect( target.profile.get_absolute_url() )
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def post_moderate(request, pid, status):
     "General moderation function"
     user = request.user
@@ -92,7 +92,7 @@ def post_moderate(request, pid, status):
     url = models.post_moderate(request=request, user=user, post=post, status=status)
     return html.redirect( url )    
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def user_moderate(request, uid, status):
     "General moderation function"
     user   = request.user
@@ -111,7 +111,7 @@ def user_moderate(request, uid, status):
     return html.redirect( url )    
     
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def user_edit(request, uid):
     "User's profile page"
     
@@ -153,7 +153,7 @@ def user_edit(request, uid):
             url = reverse('main.server.views.user_profile', kwargs=dict(uid=target.id))
             return html.redirect(url)
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def post_reparent(request, pid, rid=0):
     "Reparent a post"
     
@@ -250,7 +250,7 @@ cheers,
 the BioStar Team
 """
 
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def request_merge(request):
     "Generates an account merge request"
     
@@ -301,7 +301,7 @@ def migrate(master, remove):
     master.profile.score += remove.profile.score
     master.profile.save()
             
-@login_required(redirect_field_name='/openid/login/')
+@login_required(redirect_field_name='/login/dnanexus/')
 def approve_merge(request, master_id, remove_id):
     "Approves an account merge request"
     user = request.user

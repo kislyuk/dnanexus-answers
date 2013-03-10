@@ -743,11 +743,14 @@ def create_profile(sender, instance, created, *args, **kwargs):
         display_name = html.nuke(instance.get_full_name()) or 'Biostar User'
         # push the last_visited into the past so that it the new post counters
         UserProfile.objects.create(user=instance, uuid=uuid, display_name=display_name, last_visited=datetime(2000, 1, 1), about_me='about me')
+    else:
+        display_name = html.nuke(instance.get_full_name()) or 'Biostar User'
+        UserProfile.objects.filter(user=instance).update(display_name=display_name)
 
 def update_profile(sender, instance, *args, **kwargs):
     "Pre save hook for profiles"
     instance.about_me_html = html.generate(instance.about_me)
-    
+
 from django.template.defaultfilters import slugify
 
 def verify_post(sender, instance, *args, **kwargs):

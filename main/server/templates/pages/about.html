@@ -5,7 +5,7 @@
 {% load humanize %}
 
 {% block title %}
-    {% trans "About Biostar" %}
+    {% trans "About DNAnexus Answers" %}
 {% endblock %}
 
 {% block body %}
@@ -13,11 +13,18 @@
 <div class="row">
 
 <div class="span12">
-    
    <div class="par">
     {%  blocktrans %}
-     This site's focus is <b>bioinformatics</b>, <b>computational genomics</b> and <b>biological data analysis</b>.
-     We welcome posts that are:
+    DNAnexus Answers is a Q&A site about the <a href=http://platform.dnanexus.com>DNAnexus Platform</a>. We welcome questions
+    about the Platform, app development, bioinformatics and computational genomics research using DNAnexus Platform, and
+    community discussion. Our discussion engine is powered by <a href=https://github.com/ialbert/biostar-central>BioStar</a>.
+    Our sister site is the <a href=http://wiki.dnanexus.com>DNAnexus Wiki</a>.
+    {% endblocktrans %}
+  </div>
+
+   <div class="par">
+    {%  blocktrans %}
+    We welcome posts that are:
     {% endblocktrans %}
   </div>
 
@@ -46,55 +53,28 @@
   </div>
 
   <div class="title">Licensing</div>
-  <div class="par">BioStar content is licensed under the 
+  <div class="par">DNAnexus Answers content is licensed under the 
     <a href="http://creativecommons.org/licenses/by/3.0/">Attribution 3.0 Unported (CC BY 3.0)</a> This means that you should
     attribute the work either to the <b>author</b> and/or to the <b>site</b>, depending on the scope and presentation of the information.
     That being said our community embraces the <a href="http://en.wikipedia.org/wiki/Fair_use">fair use policy</a> that permits
     limited use of copyrighted material without acquiring permission from the rights holders.
-    Encryped and anonymized datadumps <a href="http://www.biostars.org/static/data/">will periodically be made available.</a>
     
   </div>
   
-   <div class="title">Citing Biostar</div>
-
-    <div class="par"> 
-        Parnell LD, Lindenbaum P, Shameer K, Dall'Olio GM, Swan DC, et al. 2011 
-        <i>BioStar: An Online Question & Answer Resource for the Bioinformatics Community.</i>
-        PLoS Comput Biol 7(10): <a href="http://www.ploscompbiol.org/article/info%3Adoi%2F10.1371%2Fjournal.pcbi.1002216">e1002216. doi:10.1371/journal.pcbi.1002216</a>
-    </div>
-    
-    <div class="title">Current stats</div>
-    
-    <div class="par"> 
-            We had {{params.visitors}} visitors in the past hour.
-            <a href="{% url main.server.views.user_list %}">{{params.user_count|intcomma}} users</a> have contributed 
-            <a href="{% url main.server.views.index tab='recent' %}">{{params.post_count|intcomma}} posts</a> distributed as 
-            {{params.question_count|intcomma}} questions, {{params.answer_count|intcomma}} answers and  
-            {{params.comment_count|intcomma}} comments
-    </div>
-    
+  
     <div class="title">Source code</div>
     
     <div class="par">
-        Biostar source code at <a href="https://github.com/ialbert/biostar-central">biostar-central repository</a>. 
+        DNAnexus Answers is powered by <a href=http://biostar.org>BioStar</a>.
+        Biostar source code is available at the <a href="https://github.com/ialbert/biostar-central">biostar-central repository</a>. 
         Report bugs or feature requests in the <a href="https://github.com/ialbert/biostar-central/issues"> issue tracker</a>.   
         Copyright by the <a href="https://github.com/ialbert/biostar-central/contributors">BioStar team</a>.
     </div>
 
     <div class="title">Contact</div>
-    
+
     <div class="par">
-        Questions related to the functioning of the site may be asked in the newsgroups and/or may be sent directly to
-        the administrators or moderators listed below:
-        <ul>
-            <li>Google user group <a href="http://groups.google.com/group/biostar-central">Biostar Central</a></li>
-        </ul>
-    </div>
-    
-    <div class="title">Site manager</div>
-    
-    <div class="par">
-        The current version of BioStar is being managed by
+      DNAnexus Answers Community Managers
     </div>
     
     <div style="margin-top:5px">
@@ -102,17 +82,16 @@
             {% user_box manager %}
         {% endfor %}
     </div>
-    
 </div>
 
 </div>
     
 <div class="row">
     <div class="span12">
-    <div class="title">Biostar Administrators</div>
+    <div class="title">DNAnexus Community Administrators</div>
     
     <div class="par">
-        Administrators may moderate posts and may promote users to Editor status.
+        Community Administrators may moderate posts and may promote users to Editor status.
     </div>
     
     <div style="margin-top:5px">
@@ -124,11 +103,10 @@
 
 <div class="row">
     <div class="span12">
-    <div class="title">Biostar Editors</div>
+    <div class="title">DNAnexus Editors</div>
     
     <div class="par">
         Editors may edit, delete and reclassify all posts.
-        Every few months we promote editors based on activity and reputation.
     </div>
     
     <div style="margin-top:5px">
